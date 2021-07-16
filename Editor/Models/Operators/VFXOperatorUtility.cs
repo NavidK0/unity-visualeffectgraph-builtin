@@ -270,7 +270,7 @@ namespace UnityEditor.VFX
 
         static public VFXExpression SafeNormalize(VFXExpression v)
         {
-            var sqrDist = Dot(v,v);
+            var sqrDist = Dot(v, v);
             var condition = new VFXExpressionCondition(VFXValueType.Float, VFXCondition.Less, sqrDist, VFXOperatorUtility.EpsilonSqrExpression[VFXValueType.Float]);
             return new VFXExpressionBranch(condition, VFXOperatorUtility.ZeroExpression[v.valueType], Normalize(v));
         }
@@ -675,7 +675,7 @@ namespace UnityEditor.VFX
 
         static public VFXExpression Max3(VFXExpression x, VFXExpression y, VFXExpression z)
         {
-            return new VFXExpressionMax( new VFXExpressionMax(x, y), z);
+            return new VFXExpressionMax(new VFXExpressionMax(x, y), z);
         }
 
         static public VFXExpression Max3(VFXExpression vector3)
@@ -699,6 +699,4 @@ namespace UnityEditor.VFX
             return Min3(x, y, z);
         }
     }
-
-
 }
