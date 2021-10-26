@@ -565,8 +565,13 @@ namespace UnityEditor.VFX
 
                         callSG.builder.Append($"\n{shaderGraph.outputStructName} OUTSG = {shaderGraph.evaluationFunctionName}(INSG");
 
+ #if UNITY_2021_2_OR_NEWER
+                        if (graphCode.properties.Any())
+                            callSG.builder.Append("," + graphCode.properties.Select(t => t.GetHLSLVariableName(true, GenerationMode.VFX)).Aggregate((s, t) => s + ", " + t));
+#else
                         if (graphCode.properties.Any())
                             callSG.builder.Append("," + graphCode.properties.Select(t => t.GetHLSLVariableName(true)).Aggregate((s, t) => s + ", " + t));
+#endif
 
                         callSG.builder.AppendLine(");");
 
