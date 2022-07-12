@@ -3,7 +3,11 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
 
+#if UNITY_2022_1_OR_NEWER
+using FloatField = UnityEditor.VFX.UI.VFXLabeledField<UnityEngine.UIElements.FloatField, float>;
+#else
 using FloatField = UnityEditor.VFX.UI.VFXLabeledField<UnityEditor.UIElements.FloatField, float>;
+#endif
 
 namespace UnityEditor.VFX.UI
 {
